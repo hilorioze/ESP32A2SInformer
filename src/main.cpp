@@ -295,7 +295,10 @@ void HandleDeviceState()
 
         case DEVICE_STATE_WIFI_CONNECTING:
         {
-            strcpy(g_szSSID, WIFI_SSID);
+            if(strlen(g_szSSID) == 0)
+            {
+                strcpy(g_szSSID, WIFI_SSID);
+            }
 
             if(strlen(g_szSSID) == 0)
             {
