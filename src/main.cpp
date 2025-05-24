@@ -30,7 +30,7 @@ private:
     unsigned int m_uiOffset;
 
 public:
-    BinaryReader(const unsigned char* pucData, unsigned int uiLength) : m_pucData(pucData), m_uiOffset(0) {}
+    BinaryReader(const unsigned char* pucData) : m_pucData(pucData), m_uiOffset(0) {}
 
     unsigned char ReadByte()
     {
@@ -227,7 +227,7 @@ void OnUDPPacketReceived(AsyncUDPPacket& sPacket)
 {
     if(sPacket.length() > 0)
     {
-        BinaryReader* pReader = new BinaryReader(sPacket.data(), sPacket.length());
+        BinaryReader* pReader = new BinaryReader(sPacket.data());
 
         long lHeader = pReader->ReadLong();
         if(lHeader == 0xFFFFFFFF)
